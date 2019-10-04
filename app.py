@@ -20,15 +20,15 @@ def callback():
     json_line = request.get_json()
     json_line = json.dumps(json_line)
     decoded = json.loads(json_line)
-    user = decodeddecoded['originalDetectIntentRequest']['payload']['data']['replyToken']
-    userText = decoded['queryResult']['intent']['displayName']
+    user = decoded['originalDetectIntentRequest']['payload']['data']['replyToken']#user = decoded["events"][0]['replyToken']
+    userText = decoded['queryResult']['intent']['displayName']#userText = decoded["events"][0]['message']['text']
     #sendText(user,userText)
-    if(userText == 'สวัสดี') :
-        sendText(user,'ดีด้วย')
-    elif(usetText == 'ไอ้บ้า') :
-        sendText(user,'เอ็งซิบ้า')
+    if   (userText == 'สวัสดี') :
+        sendText(user,'จ้าา')
+    elif (userText == 'บาย') :
+        sendText(user,'ไปนะ')
     else :
-        sendText(user, 'พูดใหม่นะ ฟังไม่รู้เรื่อง')
+        sendText(user,'ไม่เข้าใจ')
     return '',200
 
 def sendText(user, text):
